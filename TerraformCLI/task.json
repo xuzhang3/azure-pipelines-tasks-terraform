@@ -44,6 +44,13 @@
         }
     ],
     "inputs": [{
+            "name": "enableAppInsight",
+            "type": "boolean",
+            "label": "Enable Application Insight",
+            "defaultValue": "false",
+            "required": true,
+            "helpMarkDown": "If checked, the Terraform command details will be recorded in the application insight"
+        },{
             "name": "command",
             "type": "pickList",
             "label": "Command",
