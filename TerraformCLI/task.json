@@ -44,12 +44,12 @@
         }
     ],
     "inputs": [{
-            "name": "enableAppInsight",
+            "name": "allowTelemetryCollection",
             "type": "boolean",
-            "label": "Enable Application Insight",
+            "label": "Allow Telemetry Collection",
             "defaultValue": "false",
             "required": true,
-            "helpMarkDown": "If checked, the Terraform command details will be recorded in the application insight"
+            "helpMarkDown": "When checked, allows the collection of usage telemetry to assist with improving the experience."
         },{
             "name": "command",
             "type": "pickList",

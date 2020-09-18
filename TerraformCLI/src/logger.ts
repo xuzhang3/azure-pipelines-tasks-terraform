@@ -16,7 +16,7 @@ export default class Logger implements ILogger {
 
     async command<TCommand extends TerraformCommand>(command: TCommand, handler: (command: TCommand) => Promise<number>, properties: any) : Promise<number>{
         let start: [number, number] = process.hrtime();
-        let enableAppInsight = tasks.getBoolInput("enableAppInsight")
+        let allowTelemetryCollection = tasks.getBoolInput("allowTelemetryCollection")
         
         let loggedOptions: any = {};
         if(command.options){
@@ -44,7 +44,7 @@ export default class Logger implements ILogger {
             return rvalue;
         }
         catch(e) {      
-            if (enableAppInsight) {
+            if (allowTelemetryCollection) {
                 request.resultCode = 500;
                 request.success = false;
                 if(e instanceof TerraformAggregateError){
@@ -81,7 +81,7 @@ export default class Logger implements ILogger {
             throw e;
         }
         finally{
-            if(enableAppInsight) {
+            if(allowTelemetryCollection) {
                 let end: [number, number] = process.hrtime(start);
                 request.duration = end[1] / 1000000;
                 this.telemetry.trackRequest(request);

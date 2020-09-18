@@ -29,8 +29,8 @@ import { TerraformAggregateError } from "./terraform-aggregate-error";
 import { TerraformOutputHandler } from "./terraform-output";
 
 
-let enableAppInsight = tasks.getBoolInput("enableAppInsight")
-if(enableAppInsight) {
+let allowTelemetryCollection =  tasks.getBoolInput("allowTelemetryCollection")
+if(allowTelemetryCollection) {
     ai.setup(tasks.getInput("aiInstrumentationKey"))
         .setAutoCollectConsole(true, true)
         .setAutoCollectExceptions(true)
@@ -97,7 +97,7 @@ mediator.executeRawString("version")
     .then((exitCode) => {
         tasks.setVariable(lastExitCodeVariableName, exitCode.toString(), false);
         tasks.setResult(tasks.TaskResult.Succeeded, "");
-        if(enableAppInsight) {
+        if(allowTelemetryCollection) {
             ai.defaultClient.flush();
         }
     })
@@ -107,7 +107,7 @@ mediator.executeRawString("version")
             exitCode = (<TerraformAggregateError>error).exitCode || exitCode;
         tasks.setVariable(lastExitCodeVariableName, exitCode.toString(), false);
         tasks.setResult(tasks.TaskResult.Failed, error);
-        if(enableAppInsight) {
+        if(allowTelemetryCollection) {
             ai.defaultClient.flush();
         }
     });
