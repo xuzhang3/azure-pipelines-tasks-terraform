@@ -66,14 +66,6 @@
             }
         },
         {
-            "name": "allowTelemetryCollection",
-            "type": "boolean",
-            "label": "Allow Telemetry Collection",
-            "defaultValue": "true",
-            "required": true,
-            "helpMarkDown": "When checked, allows the collection of usage telemetry to assist with improving the experience."
-        },
-        {
             "name": "workingDirectory",
             "type": "filePath",
             "label": "Configuration Directory",
@@ -195,6 +187,14 @@
             "required": false,
             "visibleRule": "command = x",
             "defaultValue": "#{ai-instrumentation-key}#"
+        },
+        {
+            "name": "allowTelemetryCollection",
+            "type": "boolean",
+            "label": "Allow Telemetry Collection",
+            "defaultValue": "true",
+            "required": true,
+            "helpMarkDown": "When checked, allows the collection of usage telemetry to assist with improving the experience."
         },
         {
             "name": "inputTargetPlanOrStateFilePath",
