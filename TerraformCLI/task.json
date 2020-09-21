@@ -44,13 +44,6 @@
         }
     ],
     "inputs": [{
-            "name": "allowTelemetryCollection",
-            "type": "boolean",
-            "label": "Allow Telemetry Collection",
-            "defaultValue": "false",
-            "required": true,
-            "helpMarkDown": "When checked, allows the collection of usage telemetry to assist with improving the experience."
-        },{
             "name": "command",
             "type": "pickList",
             "label": "Command",
@@ -71,6 +64,14 @@
             "properties": {
                 "EditableOptions": "False"
             }
+        },
+        {
+            "name": "allowTelemetryCollection",
+            "type": "boolean",
+            "label": "Allow Telemetry Collection",
+            "defaultValue": "true",
+            "required": true,
+            "helpMarkDown": "When checked, allows the collection of usage telemetry to assist with improving the experience."
         },
         {
             "name": "workingDirectory",
